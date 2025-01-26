@@ -1,0 +1,15 @@
+.carts-img{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carts-container{
+    height: 100vh;
+}
+.carts-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}

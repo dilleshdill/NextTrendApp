@@ -1,0 +1,15 @@
+.products-img{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.products-container{
+    height: 100vh;
+}
+.products-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}

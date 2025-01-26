@@ -1,0 +1,107 @@
+.filters-tab1{
+    width: 100%;
+    height: fit-content;
+}
+.category-list{
+    list-style: none;
+}
+.category-button{
+    border: none;
+    background-color: white;
+    font-size: 17px;
+    margin-bottom: 10px;
+    font-family: roboto;
+    color: #475569;
+}
+.category-container{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15%;
+}
+.ratings-btn{
+    border: none;
+    background-color: white;
+    font-size: 17px;
+    margin-bottom: 10px;
+    font-family: roboto;
+    color: #475569;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 30px;
+}
+.rating-image{
+    width: 60%;
+}
+.ratings-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.ratings-heading{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: roboto;
+    color: #475569;
+    padding-left: 22%;
+}
+.category-heading{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: roboto;
+    color: #475569;
+    padding-left: 10%;
+    margin-bottom: 0;
+}
+.span{
+    padding-left: 10px;
+}
+.active-category{
+    color: #0967d2;
+}
+.active-rating{
+    color: #0967d2;
+}
+.clear-filters{
+    margin-left: 30%;
+    margin-top: 10%;
+    height: 40px;
+    width: 120px;
+    background-color: white;
+    border: 1px solid #0967d2;
+    color: #0967d2;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.search-input{
+    width: 80%;
+    height: 40px;
+    background-color: #f1f5f9;
+    border: 1px solid gray;
+    border-right: none;
+    outline: none;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: 10%;
+    padding-left: 30px;
+    font-family: roboto;
+    font-size: 17px;
+}
+.search-container{
+    height: 40px;
+    display: flex;
+
+}
+.search-icon{
+    width: 20px;
+    height: 38px;
+    background-color: #f1f5f9;
+    border: 1px solid gray;
+    border-left: none;
+    outline: none;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

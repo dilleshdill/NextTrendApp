@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
 
+
 const Header=()=>{
     const [isShow,setIsSmallDevice]=useState(window.innerWidth <= 768)
     const navigate = useNavigate()
@@ -33,13 +34,19 @@ const Header=()=>{
                 <div className='navbar'>
                     <div className='logo-container'>
                         <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png' alt='logo'
-                            className='logo'
+                            className='logo' onClick={() => navigate('/')}
                         />
                     </div>
                     <div className='nav-details'>
-                        <p>Home</p>
-                        <p>Products</p>
-                        <p>Cart</p>
+                        <button className="nav-button" onClick={() => navigate('/')}>
+                            Home
+                        </button>
+                        <button className="nav-button" onClick={() => navigate('/products')}>
+                            Products
+                        </button>
+                        <button className="nav-button" onClick={() => navigate('/cart')}>
+                            Cart
+                        </button>
                         <button className='logout' onClick={getLogout}>Logout</button>
                     </div>
                 </div>

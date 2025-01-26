@@ -6,16 +6,6 @@ import Cookies from 'js-cookie';
 
 const Home = () => {
   const navigate = useNavigate();
-  const jwtToken = Cookies.get('jwt_token');
-
-  useEffect(() => {
-    if (!jwtToken) {
-      navigate('/login');
-    }
-  }, [jwtToken, navigate]);
-  if (!jwtToken) {
-    return null;
-  }
   return (
     <div>
       <Header />
@@ -33,7 +23,7 @@ const Home = () => {
             you been seen and heard that way you are. So, celebrate the seasons new and exciting fashion
             in your own way.
           </p>
-          <button className="shop">Shop Now</button>
+          <button className="shop" onClick={() => navigate('/products')}>Shop Now</button>
         </div>
         <div className="shop-img-container">
           <img

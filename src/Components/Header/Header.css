@@ -51,3 +51,11 @@
     align-items: center;
     background-color: #d7dfe9;
 }
+.nav-button{
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    color: rgb(102, 99, 99);
+    font-size: 17px;
+    font-family: roboto;
+}
