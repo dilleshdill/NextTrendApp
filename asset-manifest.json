@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/nexttrend/static/css/main.5acbd558.css",
+    "main.js": "/nexttrend/static/js/main.5161b63d.js",
+    "static/js/453.8015fb53.chunk.js": "/nexttrend/static/js/453.8015fb53.chunk.js",
+    "index.html": "/nexttrend/index.html",
+    "main.5acbd558.css.map": "/nexttrend/static/css/main.5acbd558.css.map",
+    "main.5161b63d.js.map": "/nexttrend/static/js/main.5161b63d.js.map",
+    "453.8015fb53.chunk.js.map": "/nexttrend/static/js/453.8015fb53.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5acbd558.css",
+    "static/js/main.5161b63d.js"
+  ]
+}
