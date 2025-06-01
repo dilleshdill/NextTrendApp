@@ -2,13 +2,17 @@ import Header from "../Header/Header";
 import './Products.css';
 import AllProductsSection from "../AllProductsSection/AllProductsSection";
 import PrimeDeals from "../PrimeDeals/PrimeDeals";
-const Products = () =>{
+
+const Products = () => {
     return (
-        <div className="products-container">
+        <div className="products-page">
             <Header />
-            <PrimeDeals />
-           <AllProductsSection />
+            <main className="products-content">
+                <PrimeDeals />
+                <AllProductsSection />
+            </main>
         </div>
     )
 }
+
 export default Products;

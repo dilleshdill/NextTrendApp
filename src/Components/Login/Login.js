@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -6,90 +6,106 @@ import './Login.css';
 const Login = () => {
   const [username, setUsername] = useState('rahul');
   const [password, setPassword] = useState('rahul@2021');
-  const [notFound, setNotFound] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const jwtToken = Cookies.get('jwt_token');
     if (jwtToken) {
-      navigate('/'); 
+      navigate('/');
     }
   }, [navigate]);
 
-  const onSubmitSuccess = (jwtToken) => {
-    Cookies.set('jwt_token', jwtToken, { expires: 30 });
-    console.log('Token set, navigating to home...');
-    navigate('/');
-  };
-  const toLogin = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const userDetails = { username, password };
-    const url = '/login';
+    setIsLoading(true);
+    setError('');
+    
     try {
-      const response = await fetch(url, {
+      const response = await fetch('/login', {
         method: 'POST',
-        body: JSON.stringify(userDetails),
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ username, password }),
       });
+
       const data = await response.json();
-      if (response.ok === true) {
-        onSubmitSuccess(data.jwt_token);
-        setNotFound('');
+      
+      if (response.ok) {
+        Cookies.set('jwt_token', data.jwt_token, { expires: 30 });
+        navigate('/');
       } else {
-        setNotFound('*username not found');
-        console.error('Login failed');
+        setError(data.error || 'Invalid username or password');
       }
-    } catch (error) {
-      console.error('Error during login:', error);
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-image-container">
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-          alt="logo"
-          className="logo1"
-        />
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
-          alt="login"
-          className="login-image"
-        />
-      </div>
-      <div className="form-container">
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-          alt="logo"
-          className="logo"
-        />
-        <form className="form" onSubmit={toLogin}>
-          <label className="label">USERNAME</label>
-          <input
-            type="text"
-            placeholder="Username"
-            className="input"
-            name="username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+    <div className="login-page">
+      <div className="login-content">
+        <div className="login-illustration">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+            alt="NXT Trendz Logo"
+            className="logo-mobile"
           />
-          <label className="label">PASSWORD</label>
-          <input
-            type="password"
-            placeholder="Password"
-            className="input"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
+            alt="Login Illustration"
+            className="illustration"
           />
-          <button type="submit" className="login">
-            Login
-          </button>
-          {notFound && <p className="error">{notFound}</p>}
-        </form>
+        </div>
+        
+        <div className="login-form-container">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+            alt="NXT Trendz Logo"
+            className="logo-desktop"
+          />
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="form-group">
+              <label htmlFor="username" className="form-label">
+                USERNAME
+              </label>
+              <input
+                id="username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="form-input"
+                placeholder="Username"
+                required
+              />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="password" className="form-label">
+                PASSWORD
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+                placeholder="Password"
+                required
+              />
+            </div>
+            
+            {error && <p className="error-message">{error}</p>}
+            
+            <button type="submit" className="login-button" disabled={isLoading}>
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

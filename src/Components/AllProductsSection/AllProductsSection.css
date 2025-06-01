@@ -1,99 +1,175 @@
-.products-list{
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1e293b;
+}
+
+.all-products-section-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Main Layout */
+.divs-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Filters Section */
+.filters-tab {
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Products List */
+.products-list {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    width: 70%;
-
-}
-.filters-tab{
-    width: 25%;
-    position: sticky;
-    overflow: hidden;
-    height: fit-content;
-    top: 5%;
-
-}
-.product-item{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 420px;
-}
-.products-img{
-    height: 300px;
-    border-radius: 10px;
-}
-.all-products-section-container{
-    width: 100%;
-}
-.divs-section{
-    width: 100%;
-    display: flex;
-}
-body{
+    padding: 0;
     margin: 0;
-}
-.para-heading{
-    font-size: 25px;
-    font-weight: 600;
-    font-family: roboto;
-    margin-top: 3%;
-    margin-bottom: 3%;
-}
-.brand{
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: roboto;
-}
-.Price-rating{
-    display: flex;
-    margin-top: 0;
-    justify-content: space-between;
-}
-.price{
-    font-weight: 600;
-    font-family: roboto;
-    font-size: 18px;
-}
-.rating{
-    display: flex;
-    background-color:rgb(74, 115, 240);
-    height: 30px;
-    width: 70px;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border-radius: 5px;
-}
-.star{
-    font-size: 20px;
-    margin: 0;
-    padding-left: 5px;
-}
-.all-products{
-    padding-left: 5%;
-    color: gray;
-    font-family: roboto;
-}
-.no-products{
-    font-family: roboto;
-    color: #475569;
-}
-.noproducts-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
     width: 100%;
+    box-sizing: border-box;
+    padding-left: 0;
 }
-.product-link{
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-    height: 420px;
-    margin-bottom: 2%;
-    margin-left: 5%;
+
+.product-link {
     text-decoration: none;
-    color: black;
+    color: inherit;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: auto;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.products-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Product Details */
+.para-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 5px 0;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.brand {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Price-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #1e293b;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    background-color: #3b82f6;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    gap: 2px;
+}
+
+.star {
+    font-size: 0.8rem;
+}
+
+/* No Products View */
+.noproducts-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    grid-column: 1 / -1;
+    padding: 40px 0;
+}
+
+.noproducts-section img {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.no-products {
+    font-family: 'Roboto', sans-serif;
+    color: #475569;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Media Queries for Larger Screens */
+@media (min-width: 768px) {
+    .divs-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .filters-tab {
+        width: 25%;
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+    }
+
+    .products-list {
+        width: 75%;
+        padding-left: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .all-products-section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .products-list {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
 }

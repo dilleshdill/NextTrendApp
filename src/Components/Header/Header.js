@@ -1,81 +1,97 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import './Header.css'
+import './Header.css';
 
+const Header = () => {
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+    const navigate = useNavigate();
 
-const Header=()=>{
-    const [isShow,setIsSmallDevice]=useState(window.innerWidth <= 768)
-    const navigate = useNavigate()
-    
     useEffect(() => {
         const handleResize = () => {
-            console.log(window.innerWidth)
-        setIsSmallDevice(window.innerWidth <= 768);
+            setIsMobileView(window.innerWidth <= 768);
         };
 
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-    window.addEventListener('resize', handleResize);
-
-    
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    const handleLogout = () => {
+        Cookies.remove('jwt_token');
+        navigate('/login');
     };
-  }, []);
-    const getLogout = () => {
-    Cookies.remove('jwt_token')
-        navigate('/login')
-    }
-    
+
     return (
-        <div>
-            {
-                !isShow ?( 
-                <div className='navbar'>
-                    <div className='logo-container'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png' alt='logo'
-                            className='logo' onClick={() => navigate('/')}
+        <header className="header-container">
+            {!isMobileView ? (
+                <div className="desktop-navbar">
+                    <div className="logo-container" onClick={() => navigate('/')}>
+                        <img 
+                            src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png' 
+                            alt='NXT Trendz Logo'
+                            className='logo'
                         />
                     </div>
-                    <div className='nav-details'>
-                        <button className="nav-button" onClick={() => navigate('/')}>
+                    <nav className="nav-links">
+                        <button className="nav-link" onClick={() => navigate('/')}>
                             Home
                         </button>
-                        <button className="nav-button" onClick={() => navigate('/products')}>
+                        <button className="nav-link" onClick={() => navigate('/products')}>
                             Products
                         </button>
-                        <button className="nav-button" onClick={() => navigate('/cart')}>
+                        <button className="nav-link" onClick={() => navigate('/cart')}>
                             Cart
                         </button>
-                        <button className='logout' onClick={getLogout}>Logout</button>
-                    </div>
+                        <button className='logout-button' onClick={handleLogout}>
+                            Logout
+                        </button>
+                    </nav>
                 </div>
-                ):(
-                    <div className='logo-image-container'>
-                        <div className='logo-img-container'>
-                            <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png ' alt='logo'
-                                className='logo-img'
-                            />
-                            <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png' alt='logout'
-                                className='logout-img'
-                            />
-                        </div>
-                        <div className='navbar-item'>
-                            <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png ' alt='home'
-                                className='logout-img'
-                            />
-                            <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png' alt='products'
-                                className='logout-img'
-                            />
-                            <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png' alt='cart'
-                                className='logout-img'
+            ) : (
+                <div className="mobile-navbar">
+                    <div className="mobile-header">
+                        <div className="mobile-logo-container" onClick={() => navigate('/')}>
+                            <img 
+                                src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png' 
+                                alt='NXT Trendz Logo'
+                                className='mobile-logo'
                             />
                         </div>
+                        <button className="mobile-logout" onClick={handleLogout}>
+                            <img 
+                                src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png' 
+                                alt='Logout'
+                                className='logout-icon'
+                            />
+                        </button>
                     </div>
-                )
+                    <nav className="mobile-nav-links">
+                        <button className="mobile-nav-link" onClick={() => navigate('/')}>
+                            <img 
+                                src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png' 
+                                alt='Home'
+                                className='nav-icon'
+                            />
+                        </button>
+                        <button className="mobile-nav-link" onClick={() => navigate('/products')}>
+                            <img 
+                                src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png' 
+                                alt='Products'
+                                className='nav-icon'
+                            />
+                        </button>
+                        <button className="mobile-nav-link" onClick={() => navigate('/cart')}>
+                            <img 
+                                src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png' 
+                                alt='Cart'
+                                className='nav-icon'
+                            />
+                        </button>
+                    </nav>
+                </div>
+            )}
+        </header>
+    );
+};
 
-            }
-        </div>
-    )
-}
-export default Header
+export default Header;
