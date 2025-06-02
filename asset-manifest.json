@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/NextTrendApp/static/css/main.5acbd558.css",
-    "main.js": "/NextTrendApp/static/js/main.babf1643.js",
+    "main.js": "/NextTrendApp/static/js/main.770442af.js",
     "static/js/453.8015fb53.chunk.js": "/NextTrendApp/static/js/453.8015fb53.chunk.js",
     "index.html": "/NextTrendApp/index.html",
     "main.5acbd558.css.map": "/NextTrendApp/static/css/main.5acbd558.css.map",
-    "main.babf1643.js.map": "/NextTrendApp/static/js/main.babf1643.js.map",
+    "main.770442af.js.map": "/NextTrendApp/static/js/main.770442af.js.map",
     "453.8015fb53.chunk.js.map": "/NextTrendApp/static/js/453.8015fb53.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5acbd558.css",
-    "static/js/main.babf1643.js"
+    "static/js/main.770442af.js"
   ]
 }
